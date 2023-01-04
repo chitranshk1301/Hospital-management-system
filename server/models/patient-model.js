@@ -22,20 +22,11 @@ const Patient = new Schema(
 			required: true,
 			default: true,
 		},
-		// diseases: {
-		// 	type: Array,
-		// 	default: [],
-		// },
-		// score: {
-		// 	type: Number,
-		// 	required: true,
-		// 	default: 0,
-		// },
-		// room: {
-		// 	type: String,
-		// 	required: true,
-		// 	default: "noroom",
-		// }
+		diseases: {
+			type: [String],
+			required: true,
+			default: [],
+		}
 	}
 );
 
