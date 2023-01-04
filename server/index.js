@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-import * as dotenv from 'dotenv'
+const dotenv = require('dotenv')
 
 const db = require('./db')
 const patientRouter = require('./routes/patient-router')
