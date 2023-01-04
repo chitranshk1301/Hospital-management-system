@@ -1,8 +1,10 @@
 const mongoose = require('mongoose')
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 mongoose
-    // .connect('mongodb+srv://chitransh13:vansh@cluster0.ruvcgk7.mongodb.net/hospital-management?retryWrites=true&w=majority', { useNewUrlParser: true })
-    .connect('mongodb://127.0.0.1:27017/hospital-management', { useNewUrlParser: true })
+    // .connect('mongodb://127.0.0.1:27017/hospital-management', { useNewUrlParser: true })
+    .conect(process.env.DARABASE_URL, { useNewUrlParser: true })
     .catch(e => {
         console.error('Connection error', e.message)
     })

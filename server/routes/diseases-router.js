@@ -1,12 +1,7 @@
 const express = require("express");
 
-const DiseaseCtrl = require("../controllers/diseases-ctrl");
-// const patientRouter = require("./patient-router").Router();
-const diseaseRouter = express.Router({mergeParams: true});
+const DiseaseCtrl = require("../controllers/disease-ctrl");
 const router = express.Router();
-
-// nesting the routers by attaching them as middleware
-// patientRouter.use("/:id/diseases", diseaseRouter);
 
 router.post("/disease", DiseaseCtrl.createDisease);
 router.put("/disease/:id", DiseaseCtrl.updateDisease);

@@ -36,10 +36,6 @@ const Patient = new Schema(
 		// 	required: true,
 		// 	default: "noroom",
 		// }
-		// lastUpdate: {
-		// 	type: Number,
-		// 	required: true,
-		// },
 	}
 );
 
