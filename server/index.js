@@ -19,7 +19,8 @@ app.use(bodyParser.json())
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.get('/', (req, res) => {
-    res.send('Hospital Management System')
+    res.status(200)
+    res.json({message: 'This is hospital management API'})
 })
 
 app.use('/api', patientRouter)
