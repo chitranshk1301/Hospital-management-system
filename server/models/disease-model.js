@@ -1,19 +1,21 @@
 const mongoose = require ('mongoose');
+const Schema = mongoose.Schema;
 
-var DiseaseSchema = mongoose.Schema({
+const Disease = mongoose.Schema({
     name: {
         type: String,
         unique: true,
 	   required: true 
     },
-    score: {
-        type: Number,
-        required: true,
-        default: 0
+    symptoms: {
+        type: [String],
+        required: true
+    },
+    
+    belongsToId: {
+        type: String,
+        required: true
     }
 });
 
-var Disease = mongoose.model('Disease', DiseaseSchema);
-var scoreOfDisease = {}; // empty map
-
-module.exports = {scoreOfDisease, Disease};
+module.exports = mongoose.model('diseases', Disease);

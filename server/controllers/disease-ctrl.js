@@ -1,4 +1,5 @@
 const Disease = require('../models/disease-model')
+const db = require('../db')
 
 createDisease = (req, res) => {
     const body = req.body
@@ -22,6 +23,8 @@ createDisease = (req, res) => {
             return res.status(201).json({
                 success: true,
                 id: disease._id,
+                symptoms: disease.symptoms,
+                Patient: disease.belongsToId,
                 message: 'Disease added!',
             })
         })
@@ -51,7 +54,7 @@ updateDisease = async (req, res) => {
             })
         }
         disease.name = body.name
-        disease.score = body.score
+        disease.symptoms = body.symptoms
         disease
             .save()
             .then(() => {
@@ -102,7 +105,7 @@ getDiseaseById = async (req, res) => {
 }
 
 getDiseases = async (req, res) => {
-    await Disease.find({}, (err, diseases) => {
+    await Disease.find({ belongsToId: req.params.belongsToId }, (err, diseases) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -114,6 +117,7 @@ getDiseases = async (req, res) => {
         return res.status(200).json({ success: true, data: diseases })
     }).catch(err => console.log(err))
 }
+
 
 module.exports = {
     createDisease,
