@@ -1,13 +1,12 @@
 const mongoose = require('mongoose')
-import * as dotenv from 'dotenv'
+const dotenv = require('dotenv')
 dotenv.config()
 
-mongoose
-    // .connect('mongodb://127.0.0.1:27017/hospital-management', { useNewUrlParser: true })
-    .conect(process.env.DARABASE_URL, { useNewUrlParser: true })
-    .catch(e => {
-        console.error('Connection error', e.message)
-    })
+mongoose.connect(
+    process.env.DATABASE_URL,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    () => console.log("connected to db  ")
+  );
 
 const db = mongoose.connection
 
